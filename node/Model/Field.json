@@ -1,0 +1,13 @@
+[{
+    "name":"name",
+    "type":"text"
+},
+{
+    "name":"Email",
+    "type":"email"
+},
+{
+    "name":"Contact",
+    "type":"number"
+}
+]
