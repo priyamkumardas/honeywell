@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useEffect, useState } from 'react';
+import  InputField  from "./Components/InputField";
 
 function App() {
+
+  const [field,setField]=useState([]);
+  
+  useEffect(()=>{
+    fetch('http://localhost:3030/getfields').then(res => res.json()).then(data=> setField(data))
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <form>
+        {
+          field.map((field,index)=>(
+            <InputField key={index} field={field} />
+          ))
+        }
+
+        <button type="submit">Submit</button>
+      </form>
+      
     </div>
   );
 }
